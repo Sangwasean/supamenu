@@ -1,5 +1,12 @@
-import { Entity, Column, PrimaryGeneratedColumn, BeforeInsert } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  BeforeInsert,
+  OneToMany,
+} from 'typeorm';
 import * as bcrypt from 'bcrypt';
+import { Restaurant } from 'src/restaurant/restaurant.entity';
 
 @Entity()
 export class User {
@@ -29,4 +36,7 @@ export class User {
 
   @Column({ default: 'owner' }) // Roles: owner, admin, etc.
   role: string;
+
+  @OneToMany(() => Restaurant, (restaurant) => restaurant.owner)
+  restaurant: Restaurant[];
 }

@@ -12,6 +12,7 @@ import { Module } from '@nestjs/common';
       database: 'supamenu',
       entities: [__dirname + '/../**/*.entity{.ts,.js}'],
       synchronize: true, // Auto-create tables (disable in production)
+      dropSchema: false,
     }),
   ],
 })

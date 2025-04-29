@@ -1,5 +1,6 @@
 // src/restaurants/restaurant.entity.ts
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { User } from 'src/user/user.entity';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
 
 @Entity()
 export class Restaurant {
@@ -13,24 +14,21 @@ export class Restaurant {
   @Column()
   address: string;
 
-  @Column()
-  openingHours: string;
+  @Column({ type: 'jsonb', nullable: true })
+  openingHours: {
+    from: string;
+    to: string;
+  };
 
-  @Column({ type: 'text', array: true })
+  @Column('text', { array: true })
   categories: string[];
 
-  // New fields
-  @Column()
-  ownerName: string;
-
-  @Column()
-  ownerEmail: string;
-
-  @Column()
-  phone: string;
+  @ManyToOne(() => User, (user) => user.restaurant)
+  @JoinColumn({ name: 'owner_id' })
+  owner: User;
   menuItem: any;
 
-  // Add other fields like:
-  // @Column()
-  // bankAccount: string;
+  constructor(partial?: Partial<Restaurant>) {
+    Object.assign(this, partial);
+  }
 }
