@@ -1,4 +1,4 @@
-// src/restaurants/dto/create-restaurant.dto.ts
+
 import {
   IsNotEmpty,
   IsString,

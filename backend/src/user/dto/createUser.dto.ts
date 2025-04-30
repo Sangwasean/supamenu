@@ -1,4 +1,4 @@
-// src/users/dto/create-user.dto.ts
+
 import { IsEmail, IsString, IsPhoneNumber, MinLength } from 'class-validator';
 
 export class CreateUserDto {
@@ -15,7 +15,7 @@ export class CreateUserDto {
   @MinLength(8)
   password: string;
 
-  @IsPhoneNumber('RW') // Adjust country code as needed
+  @IsPhoneNumber('RW') 
   phone: string;
 }
 

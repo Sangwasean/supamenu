@@ -3,5 +3,8 @@ import { Request } from 'express';
 import { User } from '../../user/user.entity';
 
 export interface RequestWithUser extends Request {
-  user: AuthPayload;
+  user: {
+    userId: number;
+    email: string;
+  };
 }

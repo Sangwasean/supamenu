@@ -1,4 +1,3 @@
-// src/restaurants/restaurants.controller.ts
 import {
   Controller,
   Get,
@@ -12,8 +11,8 @@ import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from 'src/auth/guards/jwtAuth.guard';
 import { RestaurantService } from './restaurant.service';
 import { CreateRestaurantDto } from './dto/create-restaurant.dto';
-import { RequestWithUser } from 'src/auth/interfaces/requestWithUser.interface';
 import { UserService } from 'src/user/user.service';
+import { RequestWithUser } from 'src/auth/interfaces/requestWithUser.interface';
 
 @ApiTags('Restaurant')
 @ApiBearerAuth()
