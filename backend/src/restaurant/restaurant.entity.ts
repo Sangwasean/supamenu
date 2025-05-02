@@ -1,6 +1,8 @@
 // src/restaurants/restaurant.entity.ts
+import { MenuItem } from 'src/menu/menuItem.entity';
+import { Order } from 'src/order/order.entity';
 import { User } from 'src/user/user.entity';
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn, OneToMany } from 'typeorm';
 
 @Entity()
 export class Restaurant {
@@ -28,6 +30,12 @@ export class Restaurant {
   owner: User;
   menuItem: any;
 
+
+  @OneToMany(() => MenuItem, (menuItem) => menuItem.restaurant)
+  menuItems: MenuItem[];
+  
+  @OneToMany(() => Order, (order) => order.restaurant)
+  orders: Order[];
   constructor(partial?: Partial<Restaurant>) {
     Object.assign(this, partial);
   }

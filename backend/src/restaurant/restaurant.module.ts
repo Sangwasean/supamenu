@@ -11,5 +11,6 @@ import { UsersModule } from 'src/user/user.module';
   imports: [TypeOrmModule.forFeature([Restaurant]),UsersModule],
   controllers: [RestaurantController],
   providers: [RestaurantService,JwtAuthGuard],
+  exports:[RestaurantService],
 })
 export class RestaurantModule {}
