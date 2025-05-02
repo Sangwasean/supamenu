@@ -4,6 +4,13 @@ import { Order } from 'src/order/order.entity';
 import { User } from 'src/user/user.entity';
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn, OneToMany } from 'typeorm';
 
+export enum RestaurantType {
+  RESTAURANT = 'restaurant',
+  PUB = 'pub',
+  HOTEL = 'hotel',
+  COFFEE_SHOP = 'coffeeshop',
+  OTHER = 'other',
+}
 @Entity()
 export class Restaurant {
   @PrimaryGeneratedColumn()
@@ -39,4 +46,11 @@ export class Restaurant {
   constructor(partial?: Partial<Restaurant>) {
     Object.assign(this, partial);
   }
+
+  @Column({
+    type: 'enum',
+    enum: RestaurantType,
+    default: RestaurantType.RESTAURANT,
+  })
+  type: RestaurantType;
 }

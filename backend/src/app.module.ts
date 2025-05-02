@@ -7,9 +7,10 @@ import { RestaurantModule } from './restaurant/restaurant.module';
 import { ClientModule } from './client/client.module';
 import { MenuModule } from './menu/menu.module';
 import { OrderModule } from './order/order.module';
+import { AnalyticsModule } from './analytics/analytics.module';
 
 @Module({
-  imports: [DatabaseModule, AuthModule , RestaurantModule , ClientModule ,MenuModule ,OrderModule],
+  imports: [DatabaseModule, AuthModule , RestaurantModule , ClientModule ,MenuModule ,OrderModule, AnalyticsModule],
   controllers: [AppController],
   providers: [AppService],
 })
