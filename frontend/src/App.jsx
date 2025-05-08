@@ -1,8 +1,28 @@
-function App() {
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
+import SignUpPage from './pages/SignUpPage';
+import Clients from './pages/Clients';
+import CreateRestaurant from './pages/CreateRestaurant';
+import Overview from './pages/Overview';
+
+export default function App() {
   return (
-    <h1 className="text-3xl font-bold text-blue-600 p-4">
-      SupaMenu Dashboard
-    </h1>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />}>
+        </Route>
+        <Route path="/login" element={<LoginPage />}>
+        </Route>
+        <Route path="/signup" element={<SignUpPage />}>
+        </Route>
+        <Route path="/clients" element={<Clients />}>
+        </Route>
+        <Route path="/restaurant" element={<CreateRestaurant />}>
+        </Route>
+        <Route path="/overview" element={<Overview />}>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
-export default App;
