@@ -11,7 +11,6 @@ import Sidebar from "../components/SideBar";
 export default function Overview() {
   return (
     <div className="bg-gray-50 grid grid-cols-5 min-h-screen">
-      {/* Sidebar */}
       <div className="col-span-1">
         <Sidebar />
       </div>
@@ -89,21 +88,87 @@ export default function Overview() {
           </div>
         </div>
 
-        {/* Orders Section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-white p-6 rounded-lg shadow-sm">
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold">Orders</h3>
-              <div className="space-y-2">
-                <div className="flex justify-between">
-                  <span>Orders/hour</span>
-                  <span className="font-medium">4,560</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Active orders</span>
-                  <span className="font-medium">60</span>
-                </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {/* Restaurants Section */}
+          <div className="bg-white p-4 rounded-lg shadow-sm">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="font-semibold">Restaurants</h3>
+              <div className="text-sm text-orange-400">view details</div>
+            </div>
+            <div className="space-y-3">
+              <div className="flex justify-between">
+                <span>Sole Luna</span>
+                <span className="font-medium">46,000</span>
               </div>
+              <div className="flex justify-between">
+                <span>Soy</span>
+                <span className="font-medium">12,000</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Hotels Section */}
+          <div className="bg-white p-4 rounded-lg shadow-sm">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="font-semibold">Hotels</h3>
+              <div className="text-sm text-orange-400">view details</div>
+            </div>
+            <div className="space-y-3">
+              <div className="flex justify-between">
+                <span>Park Inn</span>
+                <span className="font-medium">4,238</span>
+              </div>
+              <div className="flex justify-between">
+                <span>M Hotel</span>
+                <span className="font-medium">1,005</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Pubs Section */}
+          <div className="bg-white p-4 rounded-lg shadow-sm">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="font-semibold">Pubs</h3>
+              <div className="text-sm text-orange-400">view details</div>
+            </div>
+            <div className="space-y-3">
+              <div className="flex justify-between">
+                <span>Sundowner</span>
+                <span className="font-medium">300</span>
+              </div>
+              <div className="flex justify-between">
+                <span>Gate N10</span>
+                <span className="font-medium">150</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Cafes Section */}
+          <div className="bg-white p-4 rounded-lg shadow-sm">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="font-semibold">Cafes</h3>
+              <div className="text-sm text-orange-500">View all +</div>
+            </div>
+            <div className="space-y-3">
+              <div className="flex justify-between">
+                <span>Aroma</span>
+                <span className="font-medium">2,238</span>
+              </div>
+              <div className="flex justify-between">
+                <span>Patisserie Royale</span>
+                <span className="font-medium">500</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Create New Section */}
+          <div className="bg-white p-4 rounded-lg shadow-sm border-2 border-dashed">
+            <div className="h-full flex flex-col items-center justify-center gap-2">
+              <button className="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center">
+                +
+              </button>
+              <p className="text-sm text-gray-600">Create new</p>
+              <p className="text-xs text-gray-400">Today</p>
             </div>
           </div>
         </div>

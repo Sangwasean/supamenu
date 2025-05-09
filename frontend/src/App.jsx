@@ -5,6 +5,8 @@ import SignUpPage from './pages/SignUpPage';
 import Clients from './pages/Clients';
 import CreateRestaurant from './pages/CreateRestaurant';
 import Overview from './pages/Overview';
+import Menus from './pages/Menus';
+import Orders from './pages/Orders';
 
 export default function App() {
   return (
@@ -21,6 +23,10 @@ export default function App() {
         <Route path="/restaurant" element={<CreateRestaurant />}>
         </Route>
         <Route path="/overview" element={<Overview />}>
+        </Route>
+        <Route path="/menus" element={<Menus />}>
+        </Route>
+        <Route path="/orders" element={<Orders />}>
         </Route>
       </Routes>
     </BrowserRouter>

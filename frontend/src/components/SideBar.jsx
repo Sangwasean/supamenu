@@ -1,5 +1,5 @@
 // components/Sidebar.jsx
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChartColumn,
@@ -26,37 +26,39 @@ export default function Sidebar() {
             {
               icon: faChartColumn,
               label: "Overview",
-              path: "/overview"
+              path: "/overview",
             },
             {
               icon: faUsers,
               label: "Clients",
-              path: "/clients"
+              path: "/clients",
             },
             {
               icon: faUserGear,
-              label: "Users",
-              path: "/users"
+              label: "Home",
+              path: "/",
             },
             {
               icon: faGear,
-              label: "Settings",
-              path: "/settings"
+              label: "Menu",
+              path: "/menus",
             },
             {
               icon: faCircleInfo,
-              label: "My Account",
-              path: "/account"
+              label: "Orders",
+              path: "/orders",
             },
           ].map((item) => (
             <NavLink
               key={item.label}
               to={item.path}
-              className={({ isActive }) => 
+              className={({ isActive }) =>
                 `flex items-center px-4 py-3 rounded-lg transition-colors
-                 ${isActive 
-                   ? "bg-orange-100 text-orange-600" 
-                   : "text-gray-300 hover:bg-gray-800 hover:text-white"}`
+                 ${
+                   isActive
+                     ? "bg-orange-100 text-orange-600"
+                     : "text-gray-300 hover:bg-gray-800 hover:text-white"
+                 }`
               }
             >
               <FontAwesomeIcon icon={item.icon} className="w-5 h-5 mr-3" />

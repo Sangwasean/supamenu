@@ -21,7 +21,7 @@ export default function HomePage() {
             How it works
           </a>
           <button className="border border-orange-400 text-orange-400 px-4 py-2 rounded hover:bg-orange-400 hover:text-white transition-colors">
-            Sign In
+            <a href="/login">Sign In</a>
           </button>
         </div>
       </nav>
@@ -39,10 +39,10 @@ export default function HomePage() {
 
           <div className="flex flex-col md:flex-row justify-center gap-4 mb-16">
             <button className="bg-orange-400 text-white px-8 py-3 rounded-lg text-lg font-medium hover:bg-orange-500 transition-colors">
-              Register your Restaurant
+              <a href="/signup">Register your Restaurant</a>
             </button>
             <button className="border-2 border-gray-300 text-white px-8 py-3 rounded-lg text-lg font-medium hover:border-orange-400 hover:text-orange-400 transition-colors">
-              Already registered? Sign In
+              <a href="/login">Already registered? Sign In</a>
             </button>
           </div>
         </div>
