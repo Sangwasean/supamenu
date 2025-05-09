@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
@@ -29,6 +30,7 @@ export default function App() {
         <Route path="/orders" element={<Orders />}>
         </Route>
       </Routes>
+      <ToastContainer />
     </BrowserRouter>
   );
 }

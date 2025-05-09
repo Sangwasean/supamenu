@@ -1,6 +1,44 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { API_BASE_URL } from "../config";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function SignUpPage() {
+  const [firstName, setFirstname] = useState("");
+  const [lastName, setLastname] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(`${API_BASE_URL}/auth/register`, {
+        firstName,
+        lastName,
+        phone,
+        email,
+        password,
+      });
+      const { token } = response.data;
+      localStorage.setItem("token", token);
+      axios.defaults.headers.Authorization = `Bearer ${token}`;
+      toast.success("Registration successful! Redirecting to dashboard...", {
+        position: "top-center",
+        autoClose: 3000,
+      });
+      setTimeout(() => navigate("/restaurant"), 3000); // Redirect after toast
+    } catch (err) {
+      toast.error(err.response?.data?.message || "Registration failed.", {
+        position: "top-center",
+        autoClose: 3000,
+      });
+    }
+  };
+
   return (
     <div className="flex min-h-screen">
       {/* Left Panel - Branding */}
@@ -10,36 +48,56 @@ export default function SignUpPage() {
         </h1>
       </div>
 
-      {/* Right Panel - Login Form */}
+      {/* Right Panel - Signup Form */}
       <div className="w-1/2 bg-white flex items-center justify-center">
-        <div className="w-full h-2/3 max-w-md p-16 rounded-lg ">
+        <div className="w-full max-w-md p-8 rounded-lg">
           <h2 className="text-center text-gray-500 font-bold text-2xl mb-2">
             Welcome
           </h2>
           <h1 className="text-center text-2xl font-bold mb-6">
             Register to SupaMenu
           </h1>
-          <form className="space-y-4">
+          <form className="space-y-4" onSubmit={handleSubmit}>
             <div>
-            <label className="block font-bold text-lg text-gray-500 mb-1">
-                FirstName
-              </label>
-              <input type="text" name="firstname" id="" className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400" placeholder="firstname"/>
               <label className="block font-bold text-lg text-gray-500 mb-1">
-                LastName
+                First Name
               </label>
-              <input type="text" name="lastname" id="" className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400" placeholder="lastname"/>
+              <input
+                type="text"
+                value={firstName}
+                onChange={(e) => setFirstname(e.target.value)}
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
+                placeholder="First name"
+              />
+              <label className="block font-bold text-lg text-gray-500 mb-1">
+                Last Name
+              </label>
+              <input
+                type="text"
+                value={lastName}
+                onChange={(e) => setLastname(e.target.value)}
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
+                placeholder="Last name"
+              />
               <label className="block font-bold text-lg text-gray-500 mb-1">
                 Phone
               </label>
-              <input type="text" name="phone" id="" className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400" placeholder="phone"/>
+              <input
+                type="text"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
+                placeholder="Phone"
+              />
               <label className="block font-bold text-lg text-gray-500 mb-1">
                 Email
               </label>
               <input
                 type="email"
-                placeholder="Email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
+                placeholder="Email address"
               />
             </div>
 
@@ -57,8 +115,10 @@ export default function SignUpPage() {
               </div>
               <input
                 type="password"
-                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
+                placeholder="Password"
               />
             </div>
 
@@ -66,20 +126,18 @@ export default function SignUpPage() {
               type="submit"
               className="w-full py-2 mt-4 bg-orange-500 text-white font-semibold rounded-lg shadow hover:bg-orange-600 transition"
             >
-              Log In
+              Register
             </button>
+            <div className="mt-6 text-center text-sm text-gray-600">
+              Already have an account?{" "}
+              <Link
+                to="/login"
+                className="text-blue-600 hover:underline font-bold text-md"
+              >
+                Login
+              </Link>
+            </div>
           </form>
-
-          <div className="mt-6 text-center text-sm text-gray-600">
-            Already have an account?{" "}
-            <Link
-              to="/login"
-              className="text-blue-600 hover:underline font-bold text-md"
-            >
-              Login
-            </Link>
-          </div>
-
         </div>
       </div>
     </div>
